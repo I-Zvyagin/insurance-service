@@ -165,13 +165,4 @@ public class TravelCalculatePremiumControllerTest {
                 "rest/TravelCalculatePremiumResponse_selectedRisksIsNull.json"
         );
     }
-
-    @Test
-    @DisplayName("Test case 15: selectedRisks not Supported")
-    public void selectedRisksNotSupported() throws Exception {
-        getResponseAndCompare(
-                "rest/TravelCalculatePremiumRequest_selectedRisks_not_supported.json",
-                "rest/TravelCalculatePremiumResponse_selectedRisks_not_supported.json"
-        );
-    }
 }

@@ -5,13 +5,11 @@ import lombok.RequiredArgsConstructor;
 import org.javaguru.travel.insurance.core.underwriting.TravelPremiumCalculationResult;
 import org.javaguru.travel.insurance.core.underwriting.UnderwritingCalculator;
 import org.javaguru.travel.insurance.core.validation.TravelCalculatePremiumRequestValidator;
-import org.javaguru.travel.insurance.dto.RiskPremium;
 import org.javaguru.travel.insurance.dto.TravelCalculatePremiumRequest;
 import org.javaguru.travel.insurance.dto.TravelCalculatePremiumResponse;
 import org.javaguru.travel.insurance.dto.ValidationError;
 import org.springframework.stereotype.Component;
 
-import java.math.BigDecimal;
 import java.util.List;
 
 @Component
@@ -43,6 +41,7 @@ class TravelCalculatePremiumServiceImpl implements TravelCalculatePremiumService
         response.setAgreementPremium(result.totalPremium());
         response.setRisks(result.riskPremiums());
         response.setCountry(request.getCountry());
+        response.setBirthDate(request.getBirthDate());
         return response;
     }
 }

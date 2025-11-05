@@ -22,6 +22,11 @@
     {
       "errorCode": "ERROR_CODE_8",
       "description": "Field selectedRisks is empty!"
+    },
+
+    {
+      "errorCode": "ERROR_CODE_11",
+      "description": "Field birthDate is empty!"
     }
   ],
   "personFirstName": null,
@@ -30,5 +35,6 @@
   "agreementDateTo": null,
   "agreementPremium": null,
   "risks": null,
-  "country": null
+  "country": null,
+  "birthDate" : null
 }

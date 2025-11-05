@@ -28,6 +28,8 @@ public class TravelCalculatePremiumResponse extends CoreResponse{
     private BigDecimal agreementPremium;
     private List<RiskPremium> risks;
     private String country;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+    private Date birthDate;
 
     public  TravelCalculatePremiumResponse(List<ValidationError> errors) {
         super(errors);

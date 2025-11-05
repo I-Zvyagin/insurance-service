@@ -4,11 +4,11 @@
   "personLastName" : "Lee",
   "agreementDateFrom" : "2026-08-25",
   "agreementDateTo" : "2026-08-29",
-  "agreementPremium": 14.00,
+  "agreementPremium": 15.40,
   "risks": [
     {
       "riskIc": "TRAVEL_MEDICAL",
-      "premium": 14.00
+      "premium": 15.40
     },
     {
       "riskIc": "TRAVEL_CANCELLATION",
@@ -19,5 +19,6 @@
       "premium": 0.00
     }
   ],
-  "country" : "JAPAN"
+  "country" : "JAPAN",
+  "birthDate" : "1990-09-19"
 }
