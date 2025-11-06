@@ -1,4 +1,4 @@
-package org.javaguru.travel.insurance.core.underwriting.calculators;
+package org.javaguru.travel.insurance.core.underwriting.calculators.medical;
 
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
