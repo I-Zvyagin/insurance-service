@@ -27,4 +27,5 @@ public class TravelCalculatePremiumRequest {
     private String country;
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private Date birthDate;
+    private String medicalRiskLimitLevel;
 }

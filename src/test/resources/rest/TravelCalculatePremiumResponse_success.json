@@ -20,5 +20,6 @@
     }
   ],
   "country" : "JAPAN",
-  "birthDate" : "1990-09-19"
+  "birthDate" : "1990-09-19",
+  "medicalRiskLimitLevel" : "LEVEL_20000"
 }
