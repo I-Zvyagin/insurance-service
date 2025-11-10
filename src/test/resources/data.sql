@@ -137,3 +137,64 @@ VALUES(41, 65, 1.2);
 
 INSERT INTO age_coefficient(age_from, age_to, coefficient)
 VALUES(66, 150, 1.5);
+
+
+INSERT INTO classifiers(title, description)
+VALUES('MEDICAL_RISK_LIMIT_LEVEL', 'Insurance limit');
+
+INSERT INTO classifier_values(
+    classifier_id,
+    ic,
+    description)
+SELECT
+    cl.id,
+    'LEVEL_10000',
+    'Insurance limit 10 000 EU'
+FROM classifiers as cl
+WHERE cl.title = 'MEDICAL_RISK_LIMIT_LEVEL';
+
+INSERT INTO classifier_values(
+    classifier_id,
+    ic,
+    description)
+SELECT
+    cl.id,
+    'LEVEL_15000',
+    'Insurance limit 15 000 EU'
+FROM classifiers as cl
+WHERE cl.title = 'MEDICAL_RISK_LIMIT_LEVEL';
+
+INSERT INTO classifier_values(
+    classifier_id,
+    ic,
+    description)
+SELECT
+    cl.id,
+    'LEVEL_20000',
+    'Insurance limit 20 000 EU'
+FROM classifiers as cl
+WHERE cl.title = 'MEDICAL_RISK_LIMIT_LEVEL';
+
+INSERT INTO classifier_values(
+    classifier_id,
+    ic,
+    description)
+SELECT
+    cl.id,
+    'LEVEL_50000',
+    'Insurance limit 50 000 EU'
+FROM classifiers as cl
+WHERE cl.title = 'MEDICAL_RISK_LIMIT_LEVEL';
+
+
+INSERT INTO medical_risk_limit_level(medical_risk_limit_level_ic, coefficient)
+VALUES ('LEVEL_10000', 1.0);
+
+INSERT INTO medical_risk_limit_level(medical_risk_limit_level_ic, coefficient)
+VALUES ('LEVEL_15000', 1.2);
+
+INSERT INTO medical_risk_limit_level(medical_risk_limit_level_ic, coefficient)
+VALUES ('LEVEL_20000', 1.5);
+
+INSERT INTO medical_risk_limit_level(medical_risk_limit_level_ic, coefficient)
+VALUES ('LEVEL_50000', 2.0);
