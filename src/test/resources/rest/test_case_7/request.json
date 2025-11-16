@@ -2,9 +2,9 @@
   "personFirstName" : "Stan",
   "personLastName" : "Lee",
   "agreementDateFrom" : "2026-08-25",
-  "agreementDateTo" : "2026-08-25",
+  "agreementDateTo" : "2026-08-29",
   "selectedRisks" : ["TRAVEL_MEDICAL", "TRAVEL_CANCELLATION", "TRAVEL_LOSS_BAGGAGE"],
   "country" : "JAPAN",
-  "birthDate" : "1990-09-19",
+  "birthDate" : "2030-09-19",
   "medicalRiskLimitLevel" : "LEVEL_20000"
 }

@@ -1,0 +1,17 @@
+{
+  "errors": [
+    {
+      "errorCode": "ERROR_CODE_12",
+      "description": "Field birthDate is in the future!"
+    }
+  ],
+  "personFirstName": null,
+  "personLastName": null,
+  "agreementDateFrom": null,
+  "agreementDateTo": null,
+  "agreementPremium": null,
+  "risks": null,
+  "country": null,
+  "birthDate" : null,
+  "medicalRiskLimitLevel" : null
+}
