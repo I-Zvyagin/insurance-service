@@ -27,7 +27,6 @@ class ValidationEmptyCountry extends ValidationServiceImpl{
     }
 
     private boolean checkRiskListContainTravelMedical(TravelCalculatePremiumRequest request) {
-        return request.getSelectedRisks() != null &&
-                request.getSelectedRisks().contains("TRAVEL_MEDICAL");
+        return request.getSelectedRisks() != null;
     }
 }
