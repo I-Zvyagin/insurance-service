@@ -11,6 +11,7 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
 @ExtendWith(SpringExtension.class)
 @SpringBootTest
 @AutoConfigureMockMvc
@@ -35,7 +36,7 @@ public abstract class TravelCalculatePremiumControllerTestCase {
         );
     }
     protected void getResponseAndCompare (String receivedResponseJson, String expectedResponseJson) throws Exception {
-        String response = mockMvc.perform(post("/insurance/travel/")
+        String response = mockMvc.perform(post("/insurance/travel/api/")
                         .content(jsonFileReader.readJsonFromFile(
                                 receivedResponseJson))
                         .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE))
