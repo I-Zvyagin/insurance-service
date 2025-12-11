@@ -1,9 +1,7 @@
 package org.javaguru.travel.insurance.core.underwriting;
 
 import org.javaguru.travel.insurance.dto.RiskPremium;
-import org.javaguru.travel.insurance.dto.TravelCalculatePremiumRequest;
-import org.javaguru.travel.insurance.dto.TravelCalculatePremiumResponse;
-import org.junit.jupiter.api.BeforeEach;
+import org.javaguru.travel.insurance.dto.v1.TravelCalculatePremiumRequestV1;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -27,7 +25,7 @@ class UnderwritingCalculatorImplTest {
     private UnderwritingCalculatorImpl underwritingCalculatorImpl;
 
     @Mock
-    private TravelCalculatePremiumRequest request;
+    private TravelCalculatePremiumRequestV1 request;
 
     @Test
     void calculateAgreementPrice() {

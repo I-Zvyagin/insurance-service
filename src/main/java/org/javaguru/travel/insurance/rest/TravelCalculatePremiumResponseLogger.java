@@ -3,14 +3,14 @@ package org.javaguru.travel.insurance.rest;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
-import org.javaguru.travel.insurance.dto.TravelCalculatePremiumResponse;
+import org.javaguru.travel.insurance.dto.v1.TravelCalculatePremiumResponseV1;
 import org.springframework.stereotype.Component;
 
 @Slf4j
 @Component
 public class TravelCalculatePremiumResponseLogger {
 
-    public void getResponseLog(TravelCalculatePremiumResponse response){
+    public void getResponseLog(TravelCalculatePremiumResponseV1 response){
         ObjectMapper mapper = new ObjectMapper();
         try{
             String responseLog = mapper.writeValueAsString(response);

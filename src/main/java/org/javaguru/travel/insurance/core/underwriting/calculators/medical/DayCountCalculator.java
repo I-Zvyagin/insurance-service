@@ -3,7 +3,7 @@ package org.javaguru.travel.insurance.core.underwriting.calculators.medical;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import org.javaguru.travel.insurance.core.util.DateTimeUtil;
-import org.javaguru.travel.insurance.dto.TravelCalculatePremiumRequest;
+import org.javaguru.travel.insurance.dto.v1.TravelCalculatePremiumRequestV1;
 import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
@@ -13,7 +13,7 @@ import java.math.BigDecimal;
 public class DayCountCalculator {
 
     private final DateTimeUtil dateTimeUtil;
-    BigDecimal getDayCount(TravelCalculatePremiumRequest request) {
+    BigDecimal getDayCount(TravelCalculatePremiumRequestV1 request) {
         return new BigDecimal(dateTimeUtil.getPeriodInDays(request.getAgreementDateFrom(),
                 request.getAgreementDateTo()));
     }

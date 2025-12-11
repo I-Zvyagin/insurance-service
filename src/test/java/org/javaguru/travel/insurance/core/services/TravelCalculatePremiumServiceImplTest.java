@@ -3,8 +3,8 @@ package org.javaguru.travel.insurance.core.services;
 import org.javaguru.travel.insurance.core.underwriting.TravelPremiumCalculationResult;
 import org.javaguru.travel.insurance.core.underwriting.UnderwritingCalculator;
 import org.javaguru.travel.insurance.core.validation.TravelCalculatePremiumRequestValidator;
-import org.javaguru.travel.insurance.dto.TravelCalculatePremiumRequest;
-import org.javaguru.travel.insurance.dto.TravelCalculatePremiumResponse;
+import org.javaguru.travel.insurance.dto.v1.TravelCalculatePremiumRequestV1;
+import org.javaguru.travel.insurance.dto.v1.TravelCalculatePremiumResponseV1;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -12,7 +12,6 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 
@@ -31,8 +30,8 @@ class TravelCalculatePremiumServiceImplTest {
     @InjectMocks
     private TravelCalculatePremiumServiceImpl service;
 
-    private TravelCalculatePremiumRequest request;
-    private TravelCalculatePremiumResponse response;
+    private TravelCalculatePremiumRequestV1 request;
+    private TravelCalculatePremiumResponseV1 response;
 
     @BeforeEach
     public void setUp() {
@@ -68,8 +67,8 @@ class TravelCalculatePremiumServiceImplTest {
         assertEquals(request.getAgreementDateFrom(), response.getAgreementDateFrom());
     }
 
-    private TravelCalculatePremiumRequest createRequestWithAllFields() {
-        TravelCalculatePremiumRequest request = new TravelCalculatePremiumRequest();
+    private TravelCalculatePremiumRequestV1 createRequestWithAllFields() {
+        TravelCalculatePremiumRequestV1 request = new TravelCalculatePremiumRequestV1();
         request.setPersonFirstName("Stan");
         request.setPersonLastName("Lee");
         request.setAgreementDateFrom(new Date(126, 7, 25));

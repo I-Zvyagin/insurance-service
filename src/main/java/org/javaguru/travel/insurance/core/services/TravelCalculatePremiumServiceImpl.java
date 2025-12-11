@@ -5,8 +5,8 @@ import lombok.RequiredArgsConstructor;
 import org.javaguru.travel.insurance.core.underwriting.TravelPremiumCalculationResult;
 import org.javaguru.travel.insurance.core.underwriting.UnderwritingCalculator;
 import org.javaguru.travel.insurance.core.validation.TravelCalculatePremiumRequestValidator;
-import org.javaguru.travel.insurance.dto.TravelCalculatePremiumRequest;
-import org.javaguru.travel.insurance.dto.TravelCalculatePremiumResponse;
+import org.javaguru.travel.insurance.dto.v1.TravelCalculatePremiumRequestV1;
+import org.javaguru.travel.insurance.dto.v1.TravelCalculatePremiumResponseV1;
 import org.javaguru.travel.insurance.dto.ValidationError;
 import org.springframework.stereotype.Component;
 
@@ -20,20 +20,20 @@ class TravelCalculatePremiumServiceImpl implements TravelCalculatePremiumService
     private final TravelCalculatePremiumRequestValidator requestValidator;
 
     @Override
-    public TravelCalculatePremiumResponse calculatePremium(TravelCalculatePremiumRequest request) {
+    public TravelCalculatePremiumResponseV1 calculatePremium(TravelCalculatePremiumRequestV1 request) {
         List<ValidationError> errors = requestValidator.validate(request);
         return(errors.isEmpty())
                 ? getResponse(request, underwritingCalculator.calculatePremium(request))
                 : getResponse(errors);
     }
 
-    private TravelCalculatePremiumResponse getResponse(List<ValidationError> errors) {
-        return new TravelCalculatePremiumResponse(errors);
+    private TravelCalculatePremiumResponseV1 getResponse(List<ValidationError> errors) {
+        return new TravelCalculatePremiumResponseV1(errors);
     }
 
-    private TravelCalculatePremiumResponse getResponse(TravelCalculatePremiumRequest request,
-                                                       TravelPremiumCalculationResult result) {
-        TravelCalculatePremiumResponse response = new TravelCalculatePremiumResponse();
+    private TravelCalculatePremiumResponseV1 getResponse(TravelCalculatePremiumRequestV1 request,
+                                                         TravelPremiumCalculationResult result) {
+        TravelCalculatePremiumResponseV1 response = new TravelCalculatePremiumResponseV1();
         response.setAgreementDateFrom(request.getAgreementDateFrom());
         response.setAgreementDateTo(request.getAgreementDateTo());
         response.setPersonFirstName(request.getPersonFirstName());

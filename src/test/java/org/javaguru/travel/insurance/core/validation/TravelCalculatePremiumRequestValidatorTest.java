@@ -1,8 +1,7 @@
 package org.javaguru.travel.insurance.core.validation;
 
-import org.javaguru.travel.insurance.dto.TravelCalculatePremiumRequest;
 import org.javaguru.travel.insurance.dto.ValidationError;
-import org.junit.jupiter.api.BeforeEach;
+import org.javaguru.travel.insurance.dto.v1.TravelCalculatePremiumRequestV1;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -12,7 +11,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import java.util.List;
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.when;
 
@@ -20,27 +19,101 @@ import static org.mockito.Mockito.when;
 class TravelCalculatePremiumRequestValidatorTest {
 
     @Mock
-    private TravelCalculatePremiumRequest request;
+    private TravelCalculatePremiumRequestV1 request;
     @Mock
-    private ValidationService validationService;
+    private ValidationPersons validationPersons1;
+    @Mock
+    private ValidationPersons validationPersons2;
+    @Mock
+    private ValidationPolicy validationPolicy1;
+    @Mock
+    private ValidationPolicy validationPolicy2;
     @InjectMocks
     private TravelCalculatePremiumRequestValidatorImpl validator;
 
-    @BeforeEach
-    void setUp() {
-        validator = new TravelCalculatePremiumRequestValidatorImpl(List.of(validationService));
-    }
-
     @Test
-    void validationIsSuccessful() {
-        when(validationService.validate(request)).thenReturn(Optional.empty());
+    void validationNotThrowExceptions() {
+        validator = new TravelCalculatePremiumRequestValidatorImpl(
+                List.of(validationPersons1, validationPersons2),
+                List.of(validationPolicy1,validationPolicy2)
+        );
+
+        when(validationPersons1.validate(request)).thenReturn(Optional.empty());
+        when(validationPersons1.validateList(request)).thenReturn(List.of());
+
+        when(validationPolicy1.validate(request)).thenReturn(Optional.empty());
+        when(validationPolicy1.validateList(request)).thenReturn(List.of());
+
+        when(validationPersons2.validate(request)).thenReturn(Optional.empty());
+        when(validationPersons2.validateList(request)).thenReturn(List.of());
+
+        when(validationPolicy2.validate(request)).thenReturn(Optional.empty());
+        when(validationPolicy2.validateList(request)).thenReturn(List.of());
+
         assertTrue(validator.validate(request).isEmpty());
     }
 
     @Test
-    void validationIsUnsuccessful() {
-        when(validationService.validate(request)).thenReturn(Optional.of(new ValidationError("errorCode", "description")));
-        assertFalse(validator.validate(request).isEmpty());
+    void validationThrowOnePersonsExceptions() {
+        when(validationPersons1.validate(request)).thenReturn(Optional.of(new ValidationError("code", "description")));
+        when(validationPersons2.validate(request)).thenReturn(Optional.of(new ValidationError("code", "description")));
+
+        List<ValidationPersons> validationPersons = List.of(validationPersons1,validationPersons2);
+        List<ValidationPolicy> validationPolicies = List.of();
+
+        validator = new TravelCalculatePremiumRequestValidatorImpl(
+                validationPersons,
+                validationPolicies
+        );
+
+        assertEquals(2, validator.validate(request).size());
     }
 
+    @Test
+    void validationThrowOnePolicyExceptions() {
+        when(validationPolicy1.validate(request)).thenReturn(Optional.of(new ValidationError("code", "description")));
+        when(validationPolicy2.validate(request)).thenReturn(Optional.of(new ValidationError("code", "description")));
+
+        List<ValidationPersons> validationPersons = List.of();
+        List<ValidationPolicy> validationPolicies = List.of(validationPolicy1,validationPolicy2);
+
+        validator = new TravelCalculatePremiumRequestValidatorImpl(
+                validationPersons,
+                validationPolicies
+        );
+
+        assertEquals(2, validator.validate(request).size());
+    }
+
+    @Test
+    void validationThrowListPersonsExceptions() {
+        when(validationPersons1.validateList(request)).thenReturn(List.of(new ValidationError("code", "description")));
+        when(validationPersons2.validateList(request)).thenReturn(List.of(new ValidationError("code", "description")));
+
+        List<ValidationPersons> validationPersons = List.of(validationPersons1,validationPersons2);
+        List<ValidationPolicy> validationPolicies = List.of();
+
+        validator = new TravelCalculatePremiumRequestValidatorImpl(
+                validationPersons,
+                validationPolicies
+        );
+
+        assertEquals(2, validator.validate(request).size());
+    }
+
+    @Test
+    void validationThrowListPolicyExceptions() {
+        when(validationPolicy1.validateList(request)).thenReturn(List.of(new ValidationError("code", "description")));
+        when(validationPolicy2.validateList(request)).thenReturn(List.of(new ValidationError("code", "description")));
+
+        List<ValidationPersons> validationPersons = List.of();
+        List<ValidationPolicy> validationPolicies = List.of(validationPolicy1,validationPolicy2);
+
+        validator = new TravelCalculatePremiumRequestValidatorImpl(
+                validationPersons,
+                validationPolicies
+        );
+
+        assertEquals(2, validator.validate(request).size());
+    }
 }

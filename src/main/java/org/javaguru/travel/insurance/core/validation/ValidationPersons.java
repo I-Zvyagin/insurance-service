@@ -1,0 +1,14 @@
+package org.javaguru.travel.insurance.core.validation;
+
+import org.javaguru.travel.insurance.dto.ValidationError;
+import org.javaguru.travel.insurance.dto.v1.TravelCalculatePremiumRequestV1;
+
+import java.util.List;
+import java.util.Optional;
+
+public interface ValidationPersons {
+
+    Optional<ValidationError> validate(TravelCalculatePremiumRequestV1 request);
+
+    List<ValidationError> validateList(TravelCalculatePremiumRequestV1 request);
+}

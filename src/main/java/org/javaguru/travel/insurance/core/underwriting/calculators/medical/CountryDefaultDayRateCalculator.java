@@ -4,7 +4,7 @@ import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import org.javaguru.travel.insurance.core.domain.CountryDefaultDayRate;
 import org.javaguru.travel.insurance.core.repositories.CountryDefaultDayRateRepository;
-import org.javaguru.travel.insurance.dto.TravelCalculatePremiumRequest;
+import org.javaguru.travel.insurance.dto.v1.TravelCalculatePremiumRequestV1;
 import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
@@ -15,7 +15,7 @@ public class CountryDefaultDayRateCalculator {
 
     private final CountryDefaultDayRateRepository dayRate;
 
-    BigDecimal getCountryDefaultDayPremium(TravelCalculatePremiumRequest request) {
+    BigDecimal getCountryDefaultDayPremium(TravelCalculatePremiumRequestV1 request) {
         return dayRate.findByCountryIc(request.getCountry())
                 .map(CountryDefaultDayRate::getDefaultDayRate)
                 .orElseThrow(() -> new RuntimeException("Country day rate not found by country ic = " + request.getCountry()));
