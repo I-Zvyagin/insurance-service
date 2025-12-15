@@ -1,0 +1,18 @@
+package insurance_service.version1.rest;
+
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+
+public class TravelCalculatePremiumControllerTestCase7 extends TravelCalculatePremiumControllerTestCase {
+
+    @Test
+    @DisplayName("Test case 7: PersonBirthDate is in the future")
+    public void execute() throws Exception {
+        getResponseAndCompare();
+    }
+
+    @Override
+    protected String getFolderName() {
+        return "test_case_7";
+    }
+}

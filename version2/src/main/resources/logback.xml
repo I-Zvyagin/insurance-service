@@ -1,0 +1,33 @@
+<configuration>
+    <appender name="COMMON-FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>student_ivan_zvyagin/logs/application.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>student_ivan_zvyagin/logs/application.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>7</maxHistory>
+            <cleanHistoryOnStart>true</cleanHistoryOnStart>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss} %-5level [%thread] %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+    <appender name="REQUEST-RESPONSE-FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>student_ivan_zvyagin/logs/request-response-logger.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>student_ivan_zvyagin/logs/request-response-logger.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>7</maxHistory>
+            <cleanHistoryOnStart>true</cleanHistoryOnStart>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss} %-5level [%thread] %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+    <logger name="insurance_service.version1.rest.TravelCalculatePremiumRequestLogger" level="INFO" additivity="false">
+        <appender-ref ref="REQUEST-RESPONSE-FILE"/>
+    </logger>
+    <logger name="insurance_service.version1.rest.TravelCalculatePremiumResponseLogger" level="INFO" additivity="false">
+        <appender-ref ref="REQUEST-RESPONSE-FILE"/>
+    </logger>
+    <root level="info">
+        <appender-ref ref="COMMON-FILE" />
+    </root>
+</configuration>
