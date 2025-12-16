@@ -13,7 +13,7 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class AgreementDTO {
+public class PolicyDTO {
 
     private Date agreementDateFrom;
 

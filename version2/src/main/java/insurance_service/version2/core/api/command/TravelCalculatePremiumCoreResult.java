@@ -1,6 +1,6 @@
 package insurance_service.version2.core.api.command;
 
-import insurance_service.version2.core.api.dto.AgreementDTO;
+import insurance_service.version2.core.api.dto.PolicyDTO;
 import insurance_service.version2.core.api.dto.ValidationErrorDTO;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -17,7 +17,7 @@ public class TravelCalculatePremiumCoreResult {
 
     private List<ValidationErrorDTO> errors;
 
-    private AgreementDTO agreement;
+    private PolicyDTO agreement;
 
     public boolean hasErrors() {
         return errors != null && !errors.isEmpty();

@@ -1,4 +1,4 @@
-package insurance_service.version2.util;
+package insurance_service.version2.core.util;
 
 import insurance_service.version2.core.util.DateTimeUtil;
 import org.junit.jupiter.api.Test;

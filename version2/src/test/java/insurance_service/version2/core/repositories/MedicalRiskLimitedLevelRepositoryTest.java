@@ -1,4 +1,4 @@
-package insurance_service.version2.repositories;
+package insurance_service.version2.core.repositories;
 
 import insurance_service.version2.core.domain.MedicalRiskLimitedLevel;
 import insurance_service.version2.core.repositories.MedicalRiskLimitedLevelRepository;
