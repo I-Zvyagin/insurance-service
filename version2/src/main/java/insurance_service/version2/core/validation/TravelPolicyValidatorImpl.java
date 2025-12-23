@@ -12,7 +12,7 @@ import java.util.stream.Stream;
 
 @Component
 @RequiredArgsConstructor(access = AccessLevel.PACKAGE)
-public class TravelPolicyValidatorImpl {
+public class TravelPolicyValidatorImpl implements TravelPolicyValidator{
 
     private final ValidationPersonsFields validationPersonsFields;
     private final ValidationPoliciesFields validationPoliciesFields;

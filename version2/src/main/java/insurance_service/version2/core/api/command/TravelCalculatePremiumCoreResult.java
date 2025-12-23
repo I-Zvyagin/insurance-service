@@ -17,10 +17,13 @@ public class TravelCalculatePremiumCoreResult {
 
     private List<ValidationErrorDTO> errors;
 
-    private PolicyDTO agreement;
+    private PolicyDTO policyDTO;
 
     public boolean hasErrors() {
         return errors != null && !errors.isEmpty();
     }
 
+    public TravelCalculatePremiumCoreResult(List<ValidationErrorDTO> errors) {
+        this.errors = errors;
+    }
 }

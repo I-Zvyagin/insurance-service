@@ -7,5 +7,5 @@ import java.util.List;
 
 public interface TravelPolicyValidator {
 
-    List<ValidationErrorDTO> validate(PolicyDTO request);
+    List<ValidationErrorDTO> validate(PolicyDTO policyDTO);
 }

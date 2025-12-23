@@ -12,6 +12,6 @@ import lombok.Setter;
 @AllArgsConstructor
 public class TravelCalculatePremiumCoreCommand {
 
-    private PolicyDTO agreement;
+    private PolicyDTO policyDTO;
 
 }
